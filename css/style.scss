@@ -1,0 +1,48 @@
+@import "compass";
+
+$error: #788788;
+$sucess: #666666;
+$notif: #777;
+$default-box-shadow-color:#969696;
+
+
+@mixin notif($color){
+	padding:5px;
+	margin:5px;
+	background:$color;
+	border: darken($color,50%) 1px solid;
+	@include border-radius(10px);
+	@include box-shadow;
+}
+
+.notification{
+   @include notif($notif);
+}
+
+.error{
+   @include notif($error);	
+}
+
+.sucess{
+   @include notif($sucess);
+}
+ul.social-links{height:32px;display:block;}
+ul.social-links li{
+	list-style:none;
+	a{ display:block;float:left;width:32px;height:32px;
+	   text-indent:-9000px;
+	 }
+}
+
+$icons:(twitter,facebook,youtube,rss);
+@each $social in $icons{
+	.#{$social}{background: url("../img/#{$social}.png") no-repeat;}
+}
+
+
+@each $p in (one black,tow black+20, three black+40){
+	.#{nth($p,1)} {
+	            background: #{nth($p,2)};
+	            color:#fff;
+	}
+}
