@@ -9,8 +9,24 @@ minifyCss = require('gulp-minify-css'),
 imagemin = require('gulp-imagemin'),
 clean = require('gulp-clean'),
 zip = require('gulp-zip'),
-livereload=require('gulp-livereload');
+livereload=require('gulp-livereload'),
+svgSprite	= require('gulp-svg-sprite');
 
+
+//génerer un sprite depuis plusieurs svg
+gulp.task('svg', function(){
+    return gulp.src('./src/*.svg')
+           .pipe(plumber())
+           .pipe(svgSprite({
+                 mode: {
+                   symbol: {
+                     dest: './',
+                     sprite: 'sprite.svg'
+                   }
+                 }
+            }))
+           .pipe(gulp.dest('./'));
+});
 
 
 
